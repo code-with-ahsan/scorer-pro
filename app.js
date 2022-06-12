@@ -3,11 +3,13 @@ const express = require('express');
 const logger = require('morgan');
 const routes = require('./routes/index');
 const app = express();
+const cors = require("cors");
 require('./db');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 routes(app);
 
 // catch 404 and forward to error handler
